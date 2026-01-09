@@ -1,0 +1,53 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        if root.left is None and root.right is None:
+            return 1
+        
+        return max(self.maxDepth(root.left),self.maxDepth(root.right))+1
+
+''' No need to check root.left and root.right is None  ->>>> If a node is a leaf → both children are None
+maxDepth(None) returns 0
+So depth becomes 1 + max(0, 0) = 1 '''
+
+
+# without checking left and right:"
+
+class Solution:
+    def maxDepth(self, root):
+        if root is None:
+            return 0
+        
+        return 1 + max(
+            self.maxDepth(root.left),
+            self.maxDepth(root.right)
+        )
+
+ ''' EXAMPLE RECURSION FLOW:
+
+maxDepth(2)
+→ 1 + max(maxDepth(4), maxDepth(None))
+
+maxDepth(4)
+→ 1 + max(0, 0)
+→ 1
+
+maxDepth(None)
+→ 0
+
+maxDepth(2) → 1 + max(1, 0) = 2
+
+Right side:
+
+maxDepth(3)
+→ 1 + max(0, 0)
+→ 1
+'''
+maxDepth(1) → 1 + max(2, 1) = 3   "
