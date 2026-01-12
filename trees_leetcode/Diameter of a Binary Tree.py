@@ -1,3 +1,6 @@
+*** Make sure you return the height overall when using recursion to calculate the height because when finding if you return (left+right) 
+if you take root as example, it will return 0 as per above (left+right) which is WRONG.*** 
+
 ''' Height - How tall is the tree below me, Height increases as you go upward
 Depth (distance from root down to a node),Increases as you go down '''
 
