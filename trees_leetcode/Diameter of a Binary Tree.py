@@ -1,6 +1,22 @@
 ''' Height - How tall is the tree below me, Height increases as you go upward
 Depth (distance from root down to a node),Increases as you go down '''
 
+Root depth = 0
+
+Increases as you go down
+
+Example:
+
+    1
+   /
+  2
+ /
+4
+    
+depth(1) = 0
+depth(2) = 1
+depth(4) = 2
+
 '''The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
 
 The length of a path between two nodes is represented by the number of edges between them. '''
