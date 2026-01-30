@@ -1,0 +1,10 @@
+"If input is an adjacency matrix → stay with matrix.
+Adjacency list helps only when input is sparse or edge-based"	Adjacency lists are efficient for sparse, edge-based graphs, 
+while adjacency matrices are suitable for dense graphs or matrix-based inputs
+
+Edges based Representation : You are given a list of edges… ( " edges = [[u, v], [x, y], …]” )
+Sparse vs Dense (WHAT the graph actually looks like): This is about how many edges exist in reality.
+Maximum possible edges , For n nodes: Max edges ≈ n²
+Sparse graph : Very few edges compared to n²
+Dense graph: Number of edges is close to n²
+
