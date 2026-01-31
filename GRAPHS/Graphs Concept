@@ -34,4 +34,4 @@ City i is the real thing - (i,j) is just information about a connection
 Entity (node) = city i  ***(NOT (i,j))****
 
 
-*****visited=set() ***** because a set is unorders so you dont care which order nodes were visited - only whether they visited or not.
+*****visited=set() ***** because a set is unordered so you dont care which order nodes were visited - only whether they visited or not.
