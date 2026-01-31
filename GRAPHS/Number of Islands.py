@@ -1,1 +1,40 @@
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        row_len=len(grid)
+        col_len=len(grid[0])
+        self.no_of_Islands=0
+        visited=set()
+        for r in range(row_len):
+            for c in range(col_len):
+                if grid[r][c]=="1" and (r,c) not in visited:
+                    self.no_of_Islands+=1
+                    self.dfs(grid,r,c,visited,row_len,col_len)
+        return self.no_of_Islands
+
+    def dfs(self,grid,r,c,visited,row_len,col_len):
+        if 0>r>=row_len or 0>c>=col_len or (r,c) in visited or grid[r][c]=="0":
+            return
+        visited.add((r,c))
+        dir=[(1,0),(0,1),(-1,0),(0,-1)]
+        for i,j in dir:
+            nr=r+i
+            nc=c+j
+            if 0 <= nr < row_len and 0 <= nc < col_len and (nr,nc) not in visited and grid[nr][nc] == "1":
+                self.dfs(grid,nr,nc,visited,row_len,col_len)
+            
+# so here when you are using visited=set() and checking(r,c) in that visited set taking lot of time. 
+'''When I check (r,c) in visited, Python needs to:
+create a tuple (r,c)
+look it up in a set
+set lookup is O(1), but tuple creation + hashing takes time
+So marking visited in-place avoids this overhead.'''
+
+'''
+dir = [(1,0),(0,1),(-1,0),(0,-1)]
+DFS is called once per land cell (in worst case), so this list gets created thousands of times.
+Even though the list is small, creating it repeatedly adds overhead.
+Better idea:
+Define the directions once, not inside DFS, so Python doesn’t allocate that list over and over.
+This does not change big-O, but it reduces constant overhead.
+'''
 
