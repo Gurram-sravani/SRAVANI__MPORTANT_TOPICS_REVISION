@@ -38,3 +38,32 @@ Define the directions once, not inside DFS, so Python doesn’t allocate that li
 This does not change big-O, but it reduces constant overhead.
 '''
 
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        row_len=len(grid)
+        col_len=len(grid[0])
+        dir=[(1,0),(0,1),(-1,0),(0,-1)] # optimization 2, dont create in dfs because whenever you call dfs dir list will be created if you call for 4 nodes, 4 new lists are created
+        no_of_Islands=0
+       # visited=set()
+        for r in range(row_len):
+            for c in range(col_len):
+                if grid[r][c]=="1":
+                    no_of_Islands+=1
+                    self.dfs(grid,r,c,row_len,col_len,dir)
+                    grid[r][c]='0'
+        return no_of_Islands
+
+    def dfs(self,grid,r,c,row_len,col_len,dir):
+        if 0>r>=row_len or 0>c>=col_len or grid[r][c]=="0":
+            return
+        #visited.add((r,c))
+        grid[r][c]='0'  # Optimization 1 to avoid checking in visited by creating a tuple(r,c)
+        
+        for i,j in dir:
+            nr=r+i
+            nc=c+j
+            if 0 <= nr < row_len and 0 <= nc < col_len and grid[nr][nc] == "1":
+                self.dfs(grid,nr,nc,row_len,col_len,dir)
+                
+
+
