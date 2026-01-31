@@ -8,3 +8,27 @@ Maximum possible edges , For n nodes: Max edges ≈ n²
 Sparse graph : Very few edges compared to n²
 Dense graph: Number of edges is close to n²
 
+Input Format	Graph Nature	Typical Choice
+Edge-based	Sparse	Adjacency list
+Matrix-based	Dense	Adjacency matrix
+Matrix-based	Sparse	Still matrix (input forces it)
+Edge-based	Dense	Adjacency list (still better)
+
+| Problem   | Matrix cell means         | Node is |
+| --------- | ------------------------- | ------- |
+| Islands   | A place you can stand on  | `(r,c)` |
+| Provinces | A yes/no about connection | `i`     |
+
+Be careful and Understand when you are calling dfs for above problems, make sure it representa a relationship or real node.
+
+If a matrix cell represents a real object, DFS uses (r,c).
+If a matrix cell represents a relationship, DFS uses the node index.
+
+Case 1: Number of Islands
+What does the matrix represent -  Each cell (r,c) IS a real thing - It is a land tile or water tile
+Entity (node) = cell (r,c)
+
+Case 2: Number of Provinces
+What does the matrix represent - The matrix does NOT represent places. It represents connections between cities
+City i is the real thing - (i,j) is just information about a connection
+Entity (node) = city i  ***(NOT (i,j))****
