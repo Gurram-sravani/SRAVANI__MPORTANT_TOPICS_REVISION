@@ -50,7 +50,6 @@ class Solution:
                 if grid[r][c]=="1":
                     no_of_Islands+=1
                     self.dfs(grid,r,c,row_len,col_len,dir)
-                    grid[r][c]='0'
         return no_of_Islands
 
     def dfs(self,grid,r,c,row_len,col_len,dir):
