@@ -1,7 +1,7 @@
 ''' A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.'''
 '''What does “balanced” mean : Each level splits nodes into two halves , Tree grows wide, not tall
 "You need to calculate the height of each sub tree from LEFT & RIGHT and check the difference abs(left-right)>1 , 
-Then it is not balanced .So in trees, there are subtrees so if any subtree is unbalanced then you can return ,
+Then it is not balanced. So in trees, there are subtrees so if any subtree is unbalanced then you can return ,
 no need of checking it further. So to track this update, take a instance variable with TRUE. Whenever you hit the difference greater than 1 ,
 then make it as FALSE and return.
 So when returning here if you just write ""return"" - you will get an ERROR saying that ""TypeError: ... NoneType - NoneType""  
