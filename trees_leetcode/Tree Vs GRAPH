@@ -338,12 +338,23 @@ Back edge	✅	✅	✅	❌
 A cycle exists only if you can follow edges and come back to the same node.
 Sharing the same object does NOT create a cycle unless there is a return edge.
 
-If you want next, I can:
+Tree:
+Connected
+Acyclic
+Exactly one simple path between every pair of nodes
 
-simulate DFS step-by-step and show why it doesn’t loop in case 2
+DAG:
+Directed
+No cycles
+May have multiple paths / multiple parents
 
-write a has_cycle() function to prove this in code
+Binary Tree (DS):
+Rooted
+Directed
+Acyclic
+Unique parent per node
+Special case of DAG
 
-draw traversal paths visually
+One-line takeaway 🔒
 
-Just tell me 👍
+All trees are DAGs, but not all DAGs are trees.
