@@ -1,0 +1,138 @@
+Tree interview checklist
+1) Clarify the problem shape
+
+Is it Binary tree or BST?
+
+Do nodes have unique values? (Usually not guaranteed.)
+
+Can there be negative values? (Matters for max path sum.)
+
+Are p and q guaranteed to exist? (Matters for LCA variants.)
+
+2) Pick traversal type (match problem)
+
+Preorder (node → left → right): build/serialize, copy tree
+
+Inorder (left → node → right): BST sorted property
+
+Postorder (left → right → node): height/diameter/balance/max-path (combine child results)
+
+Level order (BFS): shortest levels, width, “per level” tasks
+
+Rule of thumb:
+If you need values from children to compute parent → postorder.
+
+3) Define your recursive “contract” (MOST IMPORTANT)
+
+Before you write code, say:
+
+“My DFS returns ______ to the parent.”
+
+Examples:
+
+Height problems: return height
+
+Diameter: return height, update global diameter
+
+Balanced tree: return height, or return -1 if unbalanced
+
+LCA: return node or None
+
+Path sum (root→leaf): return best downward sum
+
+Validate BST: return (isValid, min, max) or use bounds
+
+If you can’t state the contract in one sentence, you’ll usually get return bugs.
+
+4) Base cases first (avoid NoneType errors)
+
+Always decide:
+
+What should DFS return for None?
+
+height: 0 (or -1 depending on definition)
+
+sum contribution: 0
+
+node: None
+
+validity: True
+
+Write base case before touching root.val.
+
+5) Decide: “return value” vs “global update”
+
+Many tree problems need two outputs:
+
+One value to return upward
+
+One value to track globally
+
+Examples:
+
+Diameter: update global with left+right, return 1+max(left,right)
+
+Max path sum: update global with left+right+val, return val+max(left,right)
+
+Ask:
+
+“What does parent need from me?”
+
+“What do I update as an answer along the way?”
+
+6) Null child safety (common crash)
+
+Before using:
+
+root.left.val or root.right.val → STOP
+Use recursive returns instead.
+
+Prefer:
+
+left = dfs(root.left)
+right = dfs(root.right)
+
+
+Instead of reading child .val directly.
+
+7) Avoid visited in trees (unless it’s actually a graph)
+
+For normal LeetCode trees: no cycles, no visited needed
+
+Use visited only if:
+
+parent pointers exist and you treat it as an undirected graph
+
+problem explicitly becomes graph-like
+
+8) Return statement checklist (prevents “wrong output”)
+
+In recursion, ensure:
+
+Every path returns something (no missing return)
+
+Return type is consistent (always int, always node, always tuple, etc.)
+
+If you have conditions like if left: return left, make sure you still handle other branches.
+
+A super common bug:
+
+returning left + right when you should return 1 + max(left,right)
+
+returning True/False in one branch and node/int in another
+
+9) Complexity sanity check
+
+Time is usually O(n) (visit each node once)
+
+Space is O(h) recursion depth
+
+balanced: O(log n)
+
+skewed: O(n)
+
+10) Quick test cases to run in your head (always)
+
+Empty tree (root = None)
+
+Single node
