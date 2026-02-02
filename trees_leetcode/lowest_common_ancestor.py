@@ -43,4 +43,9 @@ class Solution:
         return False
 
 # Time Complexity: O(n) to find p_seen list +O(n) to find q_seen + O(n) to find common char (traversing list)
-#Space Complexity: O(n) (p_seen)+O(n) q_seen + O(n) recursion stack 
+#Space Complexity: O(h) (p_seen)+O(h) q_seen + O(h) recursion stack 
+''' Your p_seen and q_seen lists store a path, not the whole subtree: 
+When you find p, you are storing: root → ... → p
+That is one single chain of nodes.
+How long can that chain be?
+At most the number of levels from root to that node = height h '''
