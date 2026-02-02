@@ -1,3 +1,25 @@
+
+For a tree, there must be exactly one simple path between every pair of nodes
+At least one path → just means “connected” (many graphs satisfy this)
+Exactly one path → this is what makes it a tree
+***************************
+Trees care about NODE IDENTITY, not values
+
+Same value + different objects → ✅ tree
+
+Same object used twice → ❌ tree
+
+Why LeetCode trees are always safe
+
+LeetCode always constructs trees like Case B, never Case A.
+Every position in the array → new TreeNode() object
+Even if values repeat, objects never do
+
+Guarantees:
+one parent per node
+unique path
+no cycles
+**********************************************
 In this Problem , They have given that "A node can only appear in the sequence at most once" - DONT GET CONFUSION HERE WITH GRAPH PATHS -
 “In graphs path node – we don’t get repeated value 1-2-3-1 – it’s wrong path”.
   
