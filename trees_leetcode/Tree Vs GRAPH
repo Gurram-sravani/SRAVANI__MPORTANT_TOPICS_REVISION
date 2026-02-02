@@ -1,0 +1,138 @@
+In this Problem , They have given that "A node can only appear in the sequence at most once" - DONT GET CONFUSION HERE WITH GRAPH PATHS -
+“In graphs path node – we don’t get repeated value 1-2-3-1 – it’s wrong path”.
+  
+But the difference is:
+
+In a tree, you can’t even form that path
+In a graph, you can form it, so you must block it
+
+This path is allowed in both:
+2 → 1 → 2
+As long as:They are different nodes. Not the same object
+Tree example:
+    1
+   / \
+  2   2
+Graph example:
+
+2a — 1 — 2b
+
+Same values, different nodes → valid path.
+
+''' Tree (graph-theory definition):
+A graph G is a tree iff:
+G is connected
+G has no cycles
+Equivalently: there is exactly one simple path between every pair of nodes
+
+👉 Unique path is the key property.
+
+🌲 Binary Tree (data-structure definition)
+
+A binary tree is a special kind of graph where:
+Each node has at most one parent
+Each node has 0, 1, or 2 children
+Left and right subtrees are disjoint
+Each node object appears exactly once in the structure '''
+
+Case 1: Valid tree (different objects)
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+A1 = Node("A1")
+B1 = Node("B1")
+B2 = Node("B2")
+
+A1.left = B1
+A1.right = B2
+
+Properties:
+All objects are different
+Each node has one parent max
+Exactly one path between any two nodes
+
+Example paths:
+B1 → A1 → B2
+✅ This is a tree
+
+#Case 2: Same object used twice (NO cycle yet!)
+A1 = Node("A1")
+B2 = Node("B2")
+
+A1.left = B2
+A1.right = B2   # same object
+
+Graph structure:
+   A1
+  /  \
+ B2  B2   (same object)
+
+Important truth 🚨
+
+❌ This is NOT a tree
+
+❌ But it also does NOT contain a cycle
+
+Why not a tree?
+
+Because:
+
+There are two different paths from A1 to B2
+left edge
+right edge
+So the “exactly one path between nodes” rule is broken.
+
+Why no cycle?
+A cycle means:
+node → ... → same node again
+That does not happen here.
+✔ This structure is a DAG (Directed Acyclic Graph)
+❌ Not a tree
+
+Case 3: Same object, TWO parents (still no cycle)
+A1 = Node("A1")
+B1 = Node("B1")
+B2 = Node("B2")
+
+A1.left = B2
+B1.right = B2   # B2 has two parents
+
+Graph:
+
+A1 → B2 ← B1
+
+Properties:
+B2 has two parents
+
+Two distinct paths exist between some nodes
+No node loops back to itself
+❌ Not a tree
+❌ Still no cycle
+✔ DAG
+
+Case 4: SAME object + backward reference (NOW it is a cycle)
+A1 = Node("A1")
+B1 = Node("B1")
+
+A1.left = B1
+B1.left = A1   # cycle
+
+
+Graph:
+
+A1 → B1
+ ↑     |
+ └─────┘
+
+Properties:
+
+A cycle exists
+Infinite traversal possible
+Multiple paths between nodes
+
+❌ Not a tree
+❌ Not acyclic
+✔ General graph
