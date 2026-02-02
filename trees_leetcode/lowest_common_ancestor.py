@@ -49,3 +49,27 @@ When you find p, you are storing: root → ... → p
 That is one single chain of nodes.
 How long can that chain be?
 At most the number of levels from root to that node = height h '''
+
+# Optimised Approavh : Return Node approach 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def common_node(self,root,p,q):
+        if root is None:
+            return None
+        if root==p or root==q:
+            return root 
+        left=self.common_node(root.left,p,q)
+        right=self.common_node(root.right,p,q)
+        if left and right:
+            return root
+        return left or right
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        return self.common_node(root,p,q)
+# Time complexity :O(n)
+# sPace complexity :O(h) Recursion stack Space
+
