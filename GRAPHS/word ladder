@@ -1,0 +1,64 @@
+# I have implemented a brute force approach  but please be careful when doing the loop in brute force 
+
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        self.level=1
+        queue=deque()
+        queue.append(beginWord)
+        self.visited=set()
+        self.visited.add(beginWord)
+        while queue:
+            size = len(queue)
+      
+            for _ in range(size):
+                word=queue.popleft()               
+                if word==endWord:
+                    return self.level
+                i=0
+                while i < len(wordList):
+                    differs=0
+                    if wordList[i] in self.visited:
+                        i += 1
+                        continue
+                    if len(wordList[i]) != len(word):
+                        i += 1
+                        continue
+                    for j in range(len(word)):
+                        if word[j]!=wordList[i][j]:
+                            differs+=1
+                            
+                    if differs==1:
+                        queue.append(wordList[i])
+                        self.visited.add(wordList[i])                    
+                    i += 1 
+            self.level+=1
+        return 0
+
+
+# Time Complexity : O(n^2). L (for loop for checking the len of the word)
+
+# SPace Complexity: O(n) Queue+O(n) visited =>O(n) 
+The above code almost took 9000ms but using set() for search reduced to 250ms 
+
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        word_set=set(wordList)
+        if endWord not in word_set:
+            return 0
+        visited=set()
+        queue=deque()
+        queue.append([beginWord,1])
+        while queue:
+            word,steps=queue.popleft()
+            if word==endWord:
+                return steps
+            for i in range(len(word)):
+                for ch in "abcdefghijklmnopqrstuvwxyz":
+                    new_word=word[:i]+ch+word[i+1:] # O(L) as strings are immutable 
+                    if new_word in word_set and new_word not in visited:
+                        queue.append([new_word,steps+1])
+                        visited.add(new_word)
+        return 0 
+# Time Complexity: O(N * 26 * L^2)
+# space Complexity: O(n) Word_Set, Wueue O(n)  => O(n) 
+
