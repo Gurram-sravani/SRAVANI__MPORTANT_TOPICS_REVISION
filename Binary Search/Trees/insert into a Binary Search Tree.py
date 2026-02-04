@@ -23,5 +23,5 @@ class Solution:
             root.right=self.traversal(root.right,val)
         return root
 
-# time Complexity :O(n)
+# time Complexity :O(log n)
 # Space Compelxity : O(n) recursion stack
