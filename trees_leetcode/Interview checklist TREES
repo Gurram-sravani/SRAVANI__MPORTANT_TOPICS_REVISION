@@ -1,3 +1,11 @@
+''' DFS space is O(h) because recursion stores only one root-to-leaf path
+
+In a balanced tree, height h = O(log n)
+
+So DFS space is O(log n) for balanced trees and O(n) for skewed trees
+
+BFS space can be O(n) because it stores an entire level '''
+
 Tree interview checklist
 1) Clarify the problem shape
 
