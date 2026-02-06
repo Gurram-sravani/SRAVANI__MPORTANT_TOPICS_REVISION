@@ -62,3 +62,26 @@ class Solution:
 # Time Complexity: O(N * 26 * L^2)
 # space Complexity: O(n) Word_Set, Wueue O(n)  => O(n) 
 
+''' Instead of taking a visited set, remove a word once you’ve enqueued it, 
+because then you’ll never need to visit it again. This reduces repeated checks and can speed things up.'''
+
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        word_set=set(wordList)
+        if endWord not in word_set:
+            return 0
+        #visited=set()
+        queue=deque()
+        queue.append([beginWord,1])
+        while queue:
+            word,steps=queue.popleft()
+            if word==endWord:
+                return steps
+            for i in range(len(word)):
+                for ch in "abcdefghijklmnopqrstuvwxyz":
+                    new_word=word[:i]+ch+word[i+1:] # O(L) as strings are immutable 
+                    if new_word in word_set:
+                        queue.append([new_word,steps+1])
+                        word_set.discard(new_word)  # word_set.remove(x) → error if x not in set, word_set.discard(x) → no error even if missing  
+        return 0 
+# Time Complexity: O(N * 26 * L^2)
