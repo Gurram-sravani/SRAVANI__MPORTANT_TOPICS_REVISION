@@ -1,0 +1,24 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        row_set=set()
+        col_set=set()
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j]==0:
+                    row_set.add(i)
+                    col_set.add(j)
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if r in row_set or c in col_set:
+                    matrix[r][c]=0
+# Time complexity:O(mn)
+# Space Complexity:O(m)+O(n)=>O(m+n)
+
+''' "Brute force is : Traversing entire matrix and finding zeros O(m.n) 
+and if you find k elements has a value 0 and to make entire row zeros (m) work + to make entire column zero (n) work => O(mn) (scan)+O(k(m+n)) (zeroing) 
+=> In worst case if k=mn then O(m·n + (m·n)(m+n)) = O(m·n·(m+n)).
+WORST CASEL:if I'm not tracking the visited cell, I might repeat replacements. Matrix full of zeros except your code does not detect “already zeroed” rows/cols and still re-traverses them.
+
+For each zero:Traverse its row → O(n)
+Traverse its column → O(m)
+And this happens k times, where k can be up to m·n. So , O(mn)+O(k(m+n))with k=mn => O(mn(m+n))"
