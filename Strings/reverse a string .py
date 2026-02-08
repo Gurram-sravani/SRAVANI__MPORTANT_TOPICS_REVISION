@@ -8,3 +8,7 @@ class Solution:
 # Time cOmplexity: n = length of the string(total characters) k = number of words. split(): creates O(n) Scans entire string once + 
                              # join() : Creates a new string with all characters → O(n) + Reverses list of words → O(k) where k = #words  => O(n)
 #Space Complexity: O(n) -> creating a list where n is number of words  + O(n) Extra space to create a new string => O(n)
+
+''' Reversing the list takes O(k) where k is the number of words,
+but since k is always less than or equal to n (number of characters),
+the overall time complexity remains O(n). '''
