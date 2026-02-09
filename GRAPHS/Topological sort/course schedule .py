@@ -41,5 +41,9 @@ BFS STEPS:
 4. make a count  of processings in queue
 5. In processing, Take them out of Queue and make indegree 0 (decrement the indegree until the node becomes 0 and if it 0 add into the Queue).
 
+After BFS finishes:
+If processed == number of nodes → No cycle → return True
+Else → Cycle exists → return False
+
 * “In BFS topological sort, indegree allows us to know in O(1) time which nodes become sources after removing a node. 
 Without indegree, we’d have to repeatedly scan edges to find nodes with no incoming edges, which increases the time complexity.” *****
