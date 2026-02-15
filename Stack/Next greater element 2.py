@@ -28,9 +28,9 @@ If you replace nums[i] with another value (or -1) during iteration, then future 
   If they are NOT taller, you immediately say:
   Okay, nobody is taller than me. You haven't checked the rest yet.
   So this else runs too early — after just one failed comparison.
-  That’s the core problem '''
+  That’s the core problem 
 
-*************************************************************************************
+****************************************************************************
 
 def nextGreaterElements(self, nums: List[int]) -> List[int]:
         n=len(nums)
@@ -48,3 +48,24 @@ def nextGreaterElements(self, nums: List[int]) -> List[int]:
   
 This else means (for-else LOOP):
 "If I finished the entire search and never found what I was looking for, then do this."
+**********************************************************************************************
+
+Optimised version:
+
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        stack=[]
+        n=len(nums)
+        nge=[0]*n
+        
+        for i in range((2*n)-1,-1,-1):  # expanding the array with same (doubling the array )
+            while stack and stack[-1]<=nums[i%n]:
+                stack.pop()
+            if not stack:
+                nge[i%n]=-1
+            else:
+                nge[i%n]=stack[-1]
+            stack.append(nums[i%n])
+        return nge
+# Time complexity: O(2n) =>O(n)
+# Space Complexity: O(n) stack + output list O(n) 
