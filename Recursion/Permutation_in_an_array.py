@@ -29,5 +29,25 @@ class Permutation:
 # Time complexity: n!*n
 # Space Complexity: used O(n) + path O(n) =>O(2n) 
 
-Optimized Approach: In this approach, I am not using any used array to store the index
+Optimized Approach: In this approach, I am not using any "used array" to store the index
 
+class Permutation:
+    def permutation_in_array(self,input):
+        n=len(input)
+        index=0
+        output=[]
+        self.backtrack(n,output,input,index)
+        return output
+    def swap(self,input,a,b):
+        input[a],input[b]=input[b],input[a]
+        return 
+
+    def backtrack(self,n,output,input,index):
+        if index>=n:
+            output.append(input[:])
+            return
+        
+        for i in range(index,n):
+            self.swap(input,index,i)
+            self.backtrack(n,output,input,index+1)
+            self.swap(input,i,index)
