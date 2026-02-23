@@ -1,3 +1,7 @@
+Store list → must use path.copy()
+Store string built from list → join already gives a safe snapshot, no copy needed
+
+
 class Solution:
   def letterCombinations(digits):
     path=[]
