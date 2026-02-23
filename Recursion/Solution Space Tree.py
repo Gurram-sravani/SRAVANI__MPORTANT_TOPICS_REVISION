@@ -18,7 +18,7 @@ if digits:
   return output
 def backtrack(self,path,index,output):
   if index>=len(digits):
-    return output.append(path.copy())
+    return output.append("".join(path))
   
   for letter in mapping[digits[index]]:
     path.append(letter)
