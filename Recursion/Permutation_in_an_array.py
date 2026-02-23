@@ -27,7 +27,7 @@ class Permutation:
             path.pop()
             used.remove(i)
 # Time complexity: n!*n
-# Space Complexity: used O(n) + path O(n) =>O(2n) 
+# Space Complexity:  O(N! * N) + O(N)
 
 Optimized Approach: In this approach, I am not using any "used array" to store the index
 
@@ -51,3 +51,6 @@ class Permutation:
             self.swap(input,index,i)
             self.backtrack(n,output,input,index+1)
             self.swap(input,i,index)
+
+Time complexity:  O(N! * N) 
+Space Complexity:  O(N! * N) 
