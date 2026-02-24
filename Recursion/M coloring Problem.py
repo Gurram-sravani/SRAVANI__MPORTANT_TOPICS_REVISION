@@ -31,3 +31,6 @@ class Solution:
                 color[node] = -1  # undo (backtrack)
 
         return False
+
+Time Complexity: O(m^n)
+Space Complexity: O(n) color list + O(n) recursion Depth 
