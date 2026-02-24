@@ -1,15 +1,33 @@
 class Solution:
-  def m_coloring(self,m,n,edges,E):
-    count=0
-    color_Added=set()
+    def m_coloring(self, m, n, edges, E=None):
+        # Build adjacency list from edges
+        adj = [[] for _ in range(n)]
+        for u, v in edges:
+            adj[u].append(v)
+            adj[v].append(u)
 
-    if count>m:
-      return 0
-    for r,c in edges:
-      if r!=c and (r,c) not in color_Added:
-        count+=2
-        color_Added.add((r,c))
-      elif (r,c) in color_Added:
-        
-      
-      
+        color = [-1] * n  # -1 means "uncolored"
+
+        return self.backtrack(m, n, adj, color, 0)
+
+    def isSafe(self, node, chosen_color, adj, color):
+        # check all neighbors of 'node'
+        for nei in adj[node]:
+            if color[nei] == chosen_color:
+                return False
+        return True
+
+    def backtrack(self, m, n, adj, color, node):
+        # base case: all nodes colored
+        if node == n:
+            return True
+
+        # try all colors for this node
+        for c in range(m):
+            if self.isSafe(node, c, adj, color):
+                color[node] = c
+                if self.backtrack(m, n, adj, color, node + 1):
+                    return True
+                color[node] = -1  # undo (backtrack)
+
+        return False
