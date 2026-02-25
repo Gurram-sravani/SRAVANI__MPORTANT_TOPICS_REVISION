@@ -23,5 +23,5 @@ class Solution:
 In backtracking, if one direction is invalid, you should skip it and continue, not stop everything.This will make you miss valid paths.'''
           
           self.backtrack(spr,spc,grid,directions,path,output,n,visited)
-          path.pop()
+    path.pop()
         
