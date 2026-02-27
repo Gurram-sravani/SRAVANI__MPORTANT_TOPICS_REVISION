@@ -50,3 +50,23 @@ class Solution:
 
 # Time complexity: O(N * L)
 # Space complexity :  Space = O(N * L)
+
+ANOTHEr APPROACH:
+
+from typing import List
+from collections import defaultdict
+class Solution:
+    def longestWord(self, words: List[str]) -> str:
+        words.sort()
+        words_dict = defaultdict(bool)
+        words_dict[""] = True
+
+        ans = ""
+        for word in words:
+            if words_dict[word[:-1]]:
+                words_dict[word] = True
+                if len(word) > len(ans) or word < ans:
+                    ans = word
+        return ans
+Time = O(N log N + N * L)
+Space = O(N * L)
