@@ -26,3 +26,24 @@ class Solution:
                 break
         return True
 # Time Complexity: O(n^2) => n (starts) * n (moves per start) = n²
+
+
+Optimized approach:
+
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        if sum(gas)<sum(cost):
+            return -1
+        tank=0
+        start=0
+        s=0
+        while s<len(gas):
+            tank=tank+gas[s]-cost[s]
+            if tank<0:
+                start=s+1
+                tank=0
+            s+=1
+        return start
+
+# Time Complexity:O(n) 
+
