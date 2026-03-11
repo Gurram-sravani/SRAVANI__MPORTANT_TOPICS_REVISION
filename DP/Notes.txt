@@ -1,0 +1,2 @@
+if the concept is TRY ALL THE POSSIBLE WAYS COMES IN - RECURSION - try all possible ways and then tell best 
+Try to figure out that this is recursion problem or not 
