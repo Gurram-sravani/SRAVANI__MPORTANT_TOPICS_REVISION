@@ -15,5 +15,5 @@ class Solution:
             memo[r][c]=total
         return total
 
-TIME COMPLEXITY: O(m+n) 
-SPACE COMPLEXITY : O(mn)
+TIME COMPLEXITY: O(mn) 
+SPACE COMPLEXITY : O(mn) MEmo +O(m+n) Recursion stack => O(mn) 
