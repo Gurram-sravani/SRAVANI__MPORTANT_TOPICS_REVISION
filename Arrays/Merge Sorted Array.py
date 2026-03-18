@@ -19,8 +19,7 @@ class Solution:
 # Time Complexity: O(m+n)
 #Space Complexity: O(1)
 
-
-
+Optimized way : 
 import math
 def merge(arr1, arr2):
     n, m = len(arr1), len(arr2)
@@ -61,5 +60,5 @@ arr2 = [2, 3, 9]
 
 merge(arr1, arr2)
 
-print(arr1)
-print(arr2)
+Time Complexity: O((n+m) log(n+m))
+Space complexity: O(1)
