@@ -10,7 +10,7 @@ class Solution:
                     dp[i]=True
                     break 
         return dp[n]
-Time Complexity:O(N^3) 
+Time Complexity:O(N^3)+O(m.k) creatign a word_set
 Space Complexity:O(n) +O(m) set 
 # The time complexity is O(n²) in standard analysis, though substring creation can make it O(n³) in strict terms.
 
